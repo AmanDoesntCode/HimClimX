@@ -1,0 +1,39 @@
+[project]
+name = "himclimx-backend"
+version = "0.1.0"
+description = "Backend service for HimClimX climate dashboard"
+authors = [
+    { name = "AmanDoesntCode", email = "E21CSEU0001@bennett.edu.in" }
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "fastapi >=0.116.2,<0.117.0",
+    "uvicorn >=0.35.0,<0.36.0",
+    "xarray",
+    "pandas",
+    "numpy",
+    "pydantic",
+    "regionmask",
+    "plotly",
+    "joblib",
+    "redis"
+]
+
+[dependency-groups]
+dev = [
+    "pytest >=8.4.2,<9.0.0",
+    "black >=24.10.0,<25.0.0",
+    "isort >=6.0.1,<7.0.0",
+    "flake8 >=7.3.0,<8.0.0",
+    "mypy",
+    "pre-commit",
+    "httpx (>=0.28.1,<0.29.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [{ include = "app" }]
