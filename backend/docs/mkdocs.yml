@@ -1,3 +1,9 @@
 site_name: My Docs
 theme:
   name: material
+nav:
+  - Home: index.md
+  - Workflow: workflow-cheatsheet.md
+  - API:
+    - Overview: api-overview.md
+    - Examples: api-examples.md

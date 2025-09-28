@@ -17,7 +17,9 @@ dependencies = [
     "regionmask",
     "plotly",
     "joblib",
-    "redis"
+    "redis",
+    "pydantic-settings (>=2.11.0,<3.0.0)",
+    "orjson (>=3.11.3,<4.0.0)"
 ]
 
 [dependency-groups]
