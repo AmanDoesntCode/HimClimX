@@ -2,6 +2,9 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 
+from .conftest import skip_if_no_data
+
+pytestmark = skip_if_no_data
 client = TestClient(app)
 
 
@@ -17,4 +20,4 @@ def test_analyze_tmp_w2000_1990_1995():
     data = r.json()
     assert data["count"] == 72
     assert isinstance(data["mean"], (int, float))
-    assert "quality" in data and "overall" in data["quality"]
+    assert "overall" in data["quality"]

@@ -2,6 +2,9 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 
+from .conftest import skip_if_no_data
+
+pytestmark = skip_if_no_data
 client = TestClient(app)
 
 
