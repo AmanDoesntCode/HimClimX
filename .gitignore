@@ -6,5 +6,5 @@ node_modules/
 .next/
 .DS_Store
 .vscode/
-.idea/
 journal/
+backend/dump.rdb
