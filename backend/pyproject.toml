@@ -19,7 +19,14 @@ dependencies = [
     "joblib",
     "redis",
     "pydantic-settings (>=2.11.0,<3.0.0)",
-    "orjson (>=3.11.3,<4.0.0)"
+    "orjson (>=3.11.3,<4.0.0)",
+    "netcdf4 (>=1.7.2,<2.0.0)",
+    "h5netcdf (>=1.6.4,<2.0.0)",
+    "shapely (>=2.1.2,<3.0.0)",
+    "pyproj (>=3.7.2,<4.0.0)",
+    "geopandas (>=1.1.1,<2.0.0)",
+    "rioxarray (>=0.19.0,<0.20.0)",
+    "prophet (>=1.1.7,<2.0.0)"
 ]
 
 [dependency-groups]
@@ -39,3 +46,14 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 packages = [{ include = "app" }]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+skip-string-normalization = false
+
+[tool.isort]
+profile = "black"        # <- makes isort compatible with Black
+line_length = 88
+combine_as_imports = true
+force_single_line = false

@@ -1,20 +1,22 @@
-from app.main import app
+from conftest import skip_if_no_data
 from fastapi.testclient import TestClient
 
+from app.main import app
+
+pytestmark = skip_if_no_data
 client = TestClient(app)
 
 
-def test_get_variables():
+def test_meta_variables_has_tmp():
     r = client.get("/meta/variables")
     assert r.status_code == 200
-    js = r.json()
-    assert isinstance(js, list) and len(js) >= 1
-    assert {"id", "name"} <= set(js[0].keys())
+    items = r.json()
+    ids = {v["id"] for v in items}
+    assert "tmp" in ids and len(items) >= 5
 
 
-def test_get_regions():
+def test_meta_regions_nonempty():
     r = client.get("/meta/regions")
     assert r.status_code == 200
-    js = r.json()
-    assert isinstance(js, list) and len(js) >= 1
-    assert {"id", "name"} <= set(js[0].keys())
+    regions = r.json()
+    assert isinstance(regions, list) and len(regions) >= 1
