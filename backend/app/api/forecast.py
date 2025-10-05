@@ -1,21 +1,14 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
-from ..core.config import get_settings
-from ..core.errors import RegionNotFound, VariableNotFound
-from ..services.catalog import get_region_or_404, get_variable_or_404
-from ..services.forecasting import forecast
-from .models import ForecastRequest, ForecastResponse
+from ..api.models import ForecastRequest, ForecastResponse
+from ..services import forecasting
+from ..services.data_loader import list_available_variables
 
-router = APIRouter(tags=["forecast"])
+router = APIRouter(prefix="", tags=["Forecast"])
 
 
 @router.post("/forecast", response_model=ForecastResponse)
-def post_forecast(payload: ForecastRequest):
-    if not get_settings().ENABLE_PROPHET:
-        # still allow a simple stub forecast in Phase 1; toggle behavior later if you prefer 403
-        pass
-    if not get_variable_or_404(payload.variable_id):
-        raise VariableNotFound(payload.variable_id)
-    if not get_region_or_404(payload.region_id):
-        raise RegionNotFound(payload.region_id)
-    return forecast(payload)
+def post_forecast(req: ForecastRequest) -> ForecastResponse:
+    if req.variable_id not in set(list_available_variables()):
+        raise HTTPException(status_code=404, detail="variable_not_found")
+    return forecasting.forecast(req)
