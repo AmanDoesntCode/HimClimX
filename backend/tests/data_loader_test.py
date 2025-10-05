@@ -1,10 +1,9 @@
 from datetime import date
 
 import numpy as np
+from conftest import skip_if_no_data
 
 from app.services.data_loader import list_available_variables, monthly_region_series
-
-from .conftest import skip_if_no_data
 
 pytestmark = skip_if_no_data
 
