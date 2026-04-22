@@ -3,7 +3,7 @@
 
 # 🏔️ Himalayan Climate Analytics Dashboard (HimClimX)
 Dynamic Dashboard For Himalayan Climate Monitoring
-<!--![Banner](./assets/banner.png) <img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/0d6f1de4-e557-4ba5-8678-23c3be8e0033" />
+<img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/0d6f1de4-e557-4ba5-8678-23c3be8e0033" />
 <img width="1915" height="905" alt="image" src="https://github.com/user-attachments/assets/cdd9c7b3-5397-4624-a383-0f33d39ff446" />
 
 
